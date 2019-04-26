@@ -10,11 +10,12 @@ const getRandomInt = (max) => {
  * @return {[Promise of list of mock]}            [返回mock数据]
  */
 export default (startIndex = 0, number = 20) => {
+  console.log(startIndex, number)
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       const mock = []
       const time = new Date()
-      for (let id = startIndex; id < number; id++) {
+      for (let id = startIndex; id < number + startIndex; id++) {
         mock.push({
           id,
           time,
