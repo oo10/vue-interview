@@ -36,9 +36,10 @@ export default {
   },
   mounted () {
     window.addEventListener('scroll', this.scrollBottom)
-    document.querySelector('.average').addEventListener('click', this.backTop)
     this.$nextTick(() => {
-      this.affixTop = document.querySelector('.js-average').offsetTop
+      const el = document.querySelector('.js-average')
+      el.addEventListener('click', this.backTop)
+      this.affixTop = el.offsetTop
     })
   },
   methods: {
