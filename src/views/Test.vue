@@ -113,12 +113,17 @@ export default {
       }
     }
     .card-top {
-      color: #fff;
       margin: 10px 0;
       display: flex;
       justify-content: space-between;
+      & > span:nth-last-of-type(1) {
+        background-image: @linear;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
       & > span:first-of-type {
         position: relative;
+        color: #fff;
         padding-left: 5px;
       }
       & > span:first-of-type::after {
