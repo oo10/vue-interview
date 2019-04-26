@@ -36,11 +36,18 @@ export default {
   },
   mounted () {
     window.addEventListener('scroll', this.scrollBottom)
+    document.querySelector('.average').addEventListener('click', this.backTop)
     this.$nextTick(() => {
       this.affixTop = document.querySelector('.js-average').offsetTop
     })
   },
   methods: {
+    backTop () {
+      if (this.scrollTop > 0) {
+        window.requestAnimationFrame(this.backTop)
+        window.scrollTo(0, this.scrollTop - this.scrollTop / 8)
+      }
+    },
     async scrollBottom () {
       this.scrollTop = document.body.scrollTop || document.documentElement.scrollTop
       const top = (document.querySelector('.js-load-more').getBoundingClientRect()).top
@@ -81,6 +88,7 @@ export default {
       height: 40px;
       line-height: 40px;
       letter-spacing: 1px;
+      cursor: pointer;
       background: @linear;
       transition: .5s cubic-bezier(0.71,1.7,0.77,1.24) all;
       &.fixed {
